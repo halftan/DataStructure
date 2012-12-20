@@ -1,5 +1,5 @@
 #include <cstdio>
-
+#define MAX(x,y) x>y?x:y
 int
 pow(int n){
     int t = 1;
@@ -17,9 +17,15 @@ getDepth(int n){
 }
 
 int main(void){
-    int n;
+    int n, max, t, tt;
     scanf("%d",&n);
-    printf("%d",getDepth(n));
+	max = 0;
+	for(int i = 0; i < n; ++i){
+		scanf("%d%d", &t, &tt);
+		t = MAX(t,tt);
+        max = MAX(max,t);
+	}
+    printf("%d",getDepth(max));
     return 0;
 }
 
