@@ -57,12 +57,15 @@ main(int argc, char **argv){
         else
             info[i].height = 0;
     }
-    qsort(info, i, sizeof(foo), cmp_h);
+    int max_height = 0;
     for(i = 0; info[i].adr; ++i){
+//      printf("%d's height: %d\n", i, info[i].height);
         if( (info[i].adr > seperator && info[i + 1].adr < seperator)
-            || (info[i + 1].adr > seperator && info[i].adr < seperator))
-            break;
+            || (info[i + 1].adr > seperator && info[i].adr < seperator)){
+            max_height = info[i + 1].height > max_height? info[i + 1].height:max_height;
+//          printf("Max:%d, current:%d\n", max_height, info[i + 1].height);
+       }
     }
-    printf("%d",info[i].height);
+    printf("%d", max_height);
     return 0;
 }
